@@ -48,7 +48,7 @@ class _QRScanScreenState extends State<QRScanScreen> {
               flex: 4,
               child: scanDone ? _displayResult() : _buildQrView(context)),
           Container(
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             child: ElevatedButton(
                 onPressed: () async {
                   await controller?.toggleFlash();
@@ -57,7 +57,7 @@ class _QRScanScreenState extends State<QRScanScreen> {
                 child: FutureBuilder(
                   future: controller?.getFlashStatus(),
                   builder: (context, snapshot) {
-                    bool flashOn = snapshot.data.toString() == 'true';
+                    final bool flashOn = snapshot.data.toString() == 'true';
                     return Icon(
                       flashOn ? Icons.flash_off : Icons.flash_on,
                     );
@@ -71,7 +71,7 @@ class _QRScanScreenState extends State<QRScanScreen> {
 
   Widget _buildQrView(BuildContext context) {
     // For this example we check how width or tall the device is and change the scanArea and overlay accordingly.
-    var scanArea = (MediaQuery.of(context).size.width < 400 ||
+    final scanArea = (MediaQuery.of(context).size.width < 400 ||
             MediaQuery.of(context).size.height < 400)
         ? 250.0
         : 300.0;
@@ -89,7 +89,7 @@ class _QRScanScreenState extends State<QRScanScreen> {
     );
   }
 
-  void _onQRViewCreated(QRViewController controller) async {
+  Future _onQRViewCreated(QRViewController controller) async {
     this.controller = controller;
     result = await controller.scannedDataStream.first;
     print('scanData.code : ${result!.code}');
@@ -101,9 +101,9 @@ class _QRScanScreenState extends State<QRScanScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
+        const SizedBox(
           height: 160,
-          child: const Center(child: const Text('Attendee Details here')),
+          child: Center(child: Text('Attendee Details here')),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

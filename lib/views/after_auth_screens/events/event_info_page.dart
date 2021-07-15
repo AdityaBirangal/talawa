@@ -4,9 +4,8 @@ import 'package:talawa/locator.dart';
 import 'package:talawa/models/events/event_model.dart';
 import 'package:talawa/services/size_config.dart';
 import 'package:talawa/utils/app_localization.dart';
+import 'package:talawa/views/after_auth_screens/events/checkin_attendees_screen.dart';
 import 'package:talawa/widgets/custom_list_tile.dart';
-
-import 'checkin_attendees_screen.dart';
 
 class EventInfoPage extends StatefulWidget {
   const EventInfoPage({Key? key, required this.event}) : super(key: key);
