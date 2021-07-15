@@ -6,6 +6,8 @@ import 'package:talawa/services/size_config.dart';
 import 'package:talawa/utils/app_localization.dart';
 import 'package:talawa/widgets/custom_list_tile.dart';
 
+import 'checkin_attendees_screen.dart';
+
 class EventInfoPage extends StatefulWidget {
   const EventInfoPage({Key? key, required this.event}) : super(key: key);
   final Event event;
@@ -66,7 +68,17 @@ class _EventInfoPageState extends State<EventInfoPage> {
                       .headline4!
                       .copyWith(fontSize: 26),
                 ),
-                const Icon(Icons.chat_bubble_outline)
+                const Icon(Icons.chat_bubble_outline),
+                //TODO:Move checkin Button inside floating action Button
+                ElevatedButton(
+                    onPressed: () {
+                      print('attendees : ${widget.event.attendees}');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CheckinEventScreen()));
+                    },
+                    child: const Text('Check-in')),
               ],
             ),
             Row(
